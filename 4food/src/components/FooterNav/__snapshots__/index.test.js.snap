@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot FooterNav 1`] = `
+<div
+  className="sc-bdVaJa gpzSpl"
+>
+  <buttom>
+    <img
+      src="homepage.svg"
+    />
+  </buttom>
+  <buttom>
+    <img
+      src="shopping-cart.svg"
+    />
+  </buttom>
+  <buttom>
+    <img
+      src="avatar.svg"
+    />
+  </buttom>
+</div>
+`;
