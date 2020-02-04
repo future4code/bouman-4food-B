@@ -20,7 +20,7 @@ const MainContent = styled.div`
     align-items: center;
 `;
 
-const Logo = styled.img`
+const LogoHome = styled.img`
     display:flex;
     margin-top: 288px;
     margin-bottom: 100px;
@@ -42,7 +42,7 @@ export class Home extends Component {
         return(
          <MainDiv>
             <MainContent>
-                <Logo src={logo}/>
+                <LogoHome src={logo}/>
             </MainContent>
          </MainDiv>
         );

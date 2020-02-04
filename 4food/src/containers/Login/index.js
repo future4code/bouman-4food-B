@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button"
 import styled from "styled-components";
 import { connect } from "react-redux";
+import logo from "../../img/logo-vermelho.svg"
+
 
 
 const DivContet = styled.div`
@@ -11,12 +13,19 @@ const DivContet = styled.div`
   background-color: white;
   height: 100vh;
   align-items: center;
+  flex-direction: column;
 `
 
+const LogoLogin = styled.img`
+  width: 104px;
+  height: 58px;
+`;
 
-const LoginWrapper = styled.form`
+
+const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 `;
 
 
@@ -37,7 +46,7 @@ class LoginPage extends Component {
     });
   };
 
-  handleLoginButton = () =>{
+  handleLEntrarButton = () =>{
     this.props.login(this.state.email, this.state.password)
   }
 
@@ -46,25 +55,35 @@ class LoginPage extends Component {
 
     return (
       <DivContet>
-        <LoginWrapper>
-       
+        <div>
+          <LogoLogin src={logo}/>
+        </div>
+        <h4>Entrar</h4>
+        <FormLogin onSubmit={this.handleLEntrarButton}>
           <TextField
             onChange={this.handleFieldChange}
             name="email"
             type="email"
             label="E-mail"
             value={email}
+            required="true"
+            variant="outlined"
+            
           />
-          <TextField
+          <br/>
+          <TextField 
             onChange={this.handleFieldChange}
             name="password"
             type="password"
-            label="password"
+            label="Password"
             value={password}
+            required="true"
+            variant="outlined"
           />
-
-          <Button onClick={this.handleLoginButton}>Login</Button>
-        </LoginWrapper>
+          <br/>
+          <Button  type="submit" variant="contained" color="primary" >Entrar</Button>
+        </FormLogin>
+        <p>Não possui cadastro? <a href= "#">Clique aqui.</a> </p>
       </DivContet>     
     );
   }
