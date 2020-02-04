@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button"
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { postLoginUser } from "../../actions";
 import logo from "../../img/logo-vermelho.svg"
 
 
@@ -46,7 +47,8 @@ class LoginPage extends Component {
     });
   };
 
-  handleLEntrarButton = () =>{
+  handleLEntrarButton = (event) =>{
+    event.preventDefault()
     this.props.login(this.state.email, this.state.password)
   }
 
@@ -68,9 +70,8 @@ class LoginPage extends Component {
             value={email}
             required="true"
             variant="outlined"
-            
           />
-          <br/>
+           <br/>
           <TextField 
             onChange={this.handleFieldChange}
             name="password"
@@ -90,7 +91,7 @@ class LoginPage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) =>({
-  
+  login: (email, password) => dispatch(postLoginUser(email, password)),
 })
 
 export default connect(
