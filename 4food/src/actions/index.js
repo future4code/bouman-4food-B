@@ -28,9 +28,9 @@ export const postLoginUser = (email, password) => async (dispatch) =>{
             dispatch(loginUser())
                 window.alert("Login realizado com sucesso!!");
                 // if(response.data.hasAddress != true){
-                //     dispatch(push(rotes.ROTACADASTROENDEREÇO))
+                //     dispatch(push(routes.ROTACADASTROENDEREÇO))
                 // }else {
-                //     dispatch(push(rotes.ROTAFEED))
+                //     dispatch(push(routes.ROTAFEED))
                 // }
                 
     }catch(error){
