@@ -84,7 +84,7 @@ class LoginPage extends Component {
           <br/>
           <Button  type="submit" variant="contained" color="primary" >Entrar</Button>
         </FormLogin>
-        <p>Não possui cadastro? <a href= "#">Clique aqui.</a> </p>
+        <p>Não possui cadastro? <Button onClick={this.props.goToSingUp} size="small"> <h5>Clique aqui.</h5></Button> </p>
       </DivContet>     
     );
   }
@@ -92,6 +92,7 @@ class LoginPage extends Component {
 
 const mapDispatchToProps = (dispatch) =>({
   login: (email, password) => dispatch(postLoginUser(email, password)),
+  // goToSingUp: () => dispatch(push(routes.ROTACADASTROUSER)),
 })
 
 export default connect(
