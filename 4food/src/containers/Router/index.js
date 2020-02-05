@@ -7,6 +7,7 @@ import Login from "../Login";
 export const routes = {
   Home: "/",
   Login: "/login",
+  Profile: "/profile",
 };
 
 function Router(props) {
