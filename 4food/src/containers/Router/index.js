@@ -3,7 +3,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
 import SignUp from "../SignUp";
 
-const routes = {
+export const routes = {
   root: "/",
   signUp: "/signup",
 };
