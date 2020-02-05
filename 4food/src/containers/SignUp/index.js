@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
+import { routes } from '../Router'
 
 
 //Container para o fundo da página
@@ -32,7 +33,7 @@ const styles = theme => ({
   });
 
 //Setando os estados
-class SignUp extends Component {
+export class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
