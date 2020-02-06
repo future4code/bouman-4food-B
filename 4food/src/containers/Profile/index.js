@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import {getProfileInfo} from '../../actions';
+import {push} from 'connected-react-router';
 
 
 const MainContainer = styled.div `
@@ -160,9 +162,28 @@ class ProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
-            password: ""
         }
+    }
+
+    componentDidMount() {
+        const token = window.localStorage.getItem("token")
+
+        if (token === null) {
+            this.props.GoToLogin
+        }
+        else {
+            this.props.getProfileInfo(this.props.profileId)
+        }
+    }
+
+    handleProfileInfo = (profileId) => {
+        this.props.profile(profileId)
+        this.props.id()
+        this.props.name()
+        this.props.email()
+        this.props.cpf()
+        this.props.hasAdress()
+        this.props.adress()
     }
 
     render() {
@@ -174,7 +195,7 @@ class ProfilePage extends Component {
                     <p>Meu perfil</p>
                 </Title>
                 <hr />
-                <UserName>Nome aqui</UserName>
+                <UserName>{this.props.name}</UserName>
                 <UserEmail>Email do cidadão</UserEmail>
                 <Cpf>999.999.999-99</Cpf>
                 <AddressBox>
@@ -195,12 +216,11 @@ class ProfilePage extends Component {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        GoToLogin: () => dispatch(push(routes.login))
+    }
+}
 
 
-
-
-
-
-
-
-export default connect()(ProfilePage);
+export default connect(mapDispatchToProps)(ProfilePage);
