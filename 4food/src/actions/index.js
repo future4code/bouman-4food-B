@@ -1,4 +1,6 @@
 import axios from "axios";
+import { routes } from "../containers/Router";
+import { push } from "connected-react-router";
 
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodB"
@@ -25,8 +27,12 @@ export const postLoginUser = (email, password) => async (dispatch) =>{
 
             dispatch(loginUser())
                 window.alert("Login realizado com sucesso!!");
+                // if(response.data.hasAddress != true){
+                //     dispatch(push(routes.ROTACADASTROENDEREÇO))
+                // }else {
+                //     dispatch(push(routes.ROTAFEED))
+                // }
                 
-                    // dispatch(push(rotes.ROTADOFEED))
     }catch(error){
         window.alert("Email ou senha incorreta.")
     }
