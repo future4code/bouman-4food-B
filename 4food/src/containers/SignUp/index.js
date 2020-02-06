@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { signUp } from "../../action/signUp";
 import styled from "styled-components";
 import logo from "../../images/logo-future-eats-invert.png";
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
@@ -21,16 +19,23 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  padding: 10%;
 `;
 
-const styles = theme => ({
-    margin: {
-      margin: theme.spacing.unit,
-    },
-    textField: {
-      flexBasis: 200,
-    },
-  });
+const Logo = styled.img`
+  margin: 1%;
+  display: flex;
+`;
+
+const FormContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin: 1%;
+  justify-content: space-between;
+`;
 
 //Setando os estados
 export class SignUp extends Component {
@@ -66,12 +71,13 @@ export class SignUp extends Component {
       }
 
     render() {
-        const { classes } = this.props;
         const { username, email, cpf } = this.state;
         return (
-            <MainContainer className={classes.root}>
-                <img src={logo} alt="iFuture Logo" />
+            <MainContainer>
                 
+                <Logo src={logo} alt="iFuture Logo" />
+              
+              <FormContainer>
                 <TextField
                     required
                     onChange={this.handleSignUpTextField}
@@ -97,13 +103,14 @@ export class SignUp extends Component {
                     margin="normal"
                     variant="outlined"
                     value={cpf}
+
                 />
 
                 <TextField
-                    className={classNames(classes.margin, classes.textField)}
                     variant="outlined"
                     type={this.state.showPassword ? 'text' : 'password'}
                     label="Senha"
+                    margin="normal"
                     value={this.state.password}
                     onChange={this.handleChange('password')}
                     InputProps={{
@@ -120,10 +127,10 @@ export class SignUp extends Component {
                     }}
                 />
                 <TextField
-                    className={classNames(classes.margin, classes.textField)}
                     variant="outlined"
                     type={this.state.showPassword ? 'text' : 'confirmPassword'}
                     label="Confirme"
+                    margin="normal"
                     value={this.state.confirmPassword}
                     onChange={this.handleChange('confirmPassword')}
                     InputProps={{
@@ -140,10 +147,14 @@ export class SignUp extends Component {
                     }}
                 />
 
-                <Button onClick= {this.handleSignUpButton} variant="contained" color="primary" className={classes.button}>
+                <Button 
+                  onClick= {this.handleSignUpButton} 
+                  variant="contained" 
+                  color="primary"
+                  margin="normal">
                     Criar
                 </Button>
-
+              </FormContainer>
             </MainContainer>
         );
     }
@@ -156,7 +167,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 //Deixei o primeiro null porque não temos mapStateToProps até agora 
-export default withStyles(styles) 
+export default
 connect(
 null,
 mapDispatchToProps
