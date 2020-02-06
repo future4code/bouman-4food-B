@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import logo from "../../img/logo-branco.svg";
-import { routes } from "../Router/";
+import { routes } from "../Router";
+import logo from "../../resources/logo-branco.svg";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 
@@ -28,6 +28,7 @@ const LogoHome = styled.img`
 `;
 
 export class Home extends Component {
+<<<<<<< HEAD
 
     // componentDidMount(dispatch){
     //     const token = window.localStorage.getItem("token")
@@ -45,11 +46,30 @@ export class Home extends Component {
                 <LogoHome src={logo}/>
             </MainContent>
          </MainDiv>
+=======
+    componentDidMount(dispatch) {
+        const token = window.localStorage.getItem("token")
+        if(token === null) {
+            this.props.goToLogin()
+        } else {
+            this.props.goToPosts()
+        }
+    }
+
+    render(){
+        return(
+            <MainDiv>
+                <MainContent>
+                    <LogoHome src={logo}/>
+                </MainContent>
+            </MainDiv>
+>>>>>>> igor
         );
     }
 }
 
 
+<<<<<<< HEAD
 const mapDispatchToProps = (dispatch) =>({
     goToLogin: () => dispatch(push(routes.Login)),
     goToPosts: () => dispatch(push(routes.postlist)),
@@ -60,3 +80,13 @@ export default connect(
     null,
     mapDispatchToProps
   )(Home);
+=======
+const mapDispatchToProps = (dispatch) => ({
+    goToLogin: () => dispatch(push(routes.Login)),
+    goToPosts: () => dispatch(push(routes.postlist)),
+})
+
+
+
+export default connect(null, mapDispatchToProps)(Home);
+>>>>>>> igor

@@ -3,14 +3,12 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button"
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { postLoginUser } from "../../actions";
-import logo from "../../img/logo-vermelho.svg"
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
-
+import { postLoginUser } from "../../actions/user";
+import logo from "../../resources/logo-vermelho.svg"
 
 
 const DivContet = styled.div`
@@ -32,7 +30,10 @@ const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+<<<<<<< HEAD
   width: 90%;
+=======
+>>>>>>> igor
 `;
 
 
@@ -43,8 +44,12 @@ class LoginPage extends Component {
     super(props);
     this.state = {
       email: "",
+<<<<<<< HEAD
       password: "",
       showPassword: false,
+=======
+      password: ""
+>>>>>>> igor
     };
   }
 
@@ -53,15 +58,19 @@ class LoginPage extends Component {
       [event.target.name]: event.target.value
     });
   };
+<<<<<<< HEAD
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
   };
+=======
+>>>>>>> igor
 
   handleLEntrarButton = (event) =>{
     event.preventDefault()
     this.props.login(this.state.email, this.state.password)
   }
 
+<<<<<<< HEAD
   handleClickShowPassword = () => {
     this.setState(state => ({ showPassword: !state.showPassword }));
   };
@@ -69,6 +78,10 @@ class LoginPage extends Component {
   render() {
     const { email, password } = this.state;
     const { classes } = this.props;
+=======
+  render() {
+    const { email, password } = this.state;
+>>>>>>> igor
 
     return (
       <DivContet>
@@ -84,6 +97,7 @@ class LoginPage extends Component {
             label="E-mail"
             value={email}
             required="true"
+<<<<<<< HEAD
             placeholder="email@email.com"
             InputLabelProps={{
               shrink: true,
@@ -114,16 +128,34 @@ class LoginPage extends Component {
               </InputAdornment>
            ),
            }} 
+=======
+            variant="outlined"
+          />
+           <br/>
+          <TextField 
+            onChange={this.handleFieldChange}
+            name="password"
+            type="password"
+            label="Password"
+            value={password}
+            required="true"
+            variant="outlined"
+>>>>>>> igor
           />
           <br/>
           <Button  type="submit" variant="contained" color="primary" >Entrar</Button>
         </FormLogin>
+<<<<<<< HEAD
          <p>Não possui cadastro? <Button onClick={this.props.goToSingUp} size="small"> <h5>Clique aqui.</h5></Button> </p>
+=======
+        <p>Não possui cadastro? <a href= "#">Clique aqui.</a> </p>
+>>>>>>> igor
       </DivContet>     
     );
   }
 }
 
+<<<<<<< HEAD
 const mapDispatchToProps = (dispatch) =>({
   login: (email, password) => dispatch(postLoginUser(email, password)),
   // goToSingUp: () => dispatch(push(routes.ROTACADASTROUSER)),
@@ -133,3 +165,13 @@ export default connect(
   null,
   mapDispatchToProps
 )(LoginPage);
+=======
+
+const mapDispatchToProps = (dispatch) =>({
+  login: (email, password) => dispatch(postLoginUser(email, password)),
+})
+
+
+
+export default connect(null, mapDispatchToProps)(LoginPage);
+>>>>>>> igor
