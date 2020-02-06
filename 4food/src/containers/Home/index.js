@@ -29,14 +29,14 @@ const LogoHome = styled.img`
 
 export class Home extends Component {
 
-    // componentDidMount(dispatch){
-    //     const token = window.localStorage.getItem("token")
-    //     if(token === null) {
-    //         this.props.goToLogin()
-    //     } else {
-    //         this.props.goToPosts()
-    //     }
-    // }
+    componentDidMount() {
+        const token = window.localStorage.getItem("token")
+        if(token === null) {
+            this.props.goToLogin()
+        } else {
+            this.props.goToFeed()
+        }
+    }
 
   render(){
         return(
@@ -52,7 +52,7 @@ export class Home extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
     goToLogin: () => dispatch(push(routes.Login)),
-    goToPosts: () => dispatch(push(routes.postlist)),
+    goToFeed: () => dispatch(push(routes.Feed)),
 })
 
 

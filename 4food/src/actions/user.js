@@ -26,6 +26,12 @@ export const postLoginUser = (email, password) => async (dispatch) => {
 
         dispatch(loginUser())
         window.alert("Login realizado com sucesso!!");
+
+        if(response.data.user.hasAddress !== true){
+            dispatch(push(routes.Adress))
+        }else {
+            dispatch(push(routes.Feed))
+        }
     }catch(error){
         window.alert("Email ou senha incorreta.")
     }
@@ -44,8 +50,28 @@ export const signUp = (username, email, cpf, password, confirmPassword) => async
     try {
         const response = await axios.post (`${baseURL}/signup`, signUpInfo)
         window.localStorage.getItem("token", response.data.token);
-        dispatch(push(routes.root))
+        dispatch(push(routes.Adress))
     } catch (error) {
         window.alert("Não foi possível realizar o cadastro")
+    }
+}
+
+
+export const registerAddress = (form) => async (dispatch) => {
+    const config = {
+        headers:{
+            'auth': window.localStorage.getItem("token")
+        }
+    }
+
+    try{
+        const response = await axios.put(`${baseURL}/address`, form, config)
+        window.localStorage.setItem("token", response.data.token);
+
+        dispatch(push(routes.Feed))
+        window.alert("Cadastro de endereço realizado com sucesso!");
+    }catch(error){
+        // dispatch(push(routes.Adress)) redirecionar para página de endereço
+        window.alert("É necessário cadastrar um endereço.")
     }
 }

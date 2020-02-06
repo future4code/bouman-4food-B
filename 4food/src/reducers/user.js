@@ -1,6 +1,6 @@
 const initialState = {
-    
 }
+
 
 const user = (state = initialState, action) => {
     switch(action.type){
@@ -10,5 +10,6 @@ const user = (state = initialState, action) => {
             return state
     }
 }
+
 
 export default user;
