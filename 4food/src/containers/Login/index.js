@@ -98,6 +98,7 @@ class LoginPage extends Component {
             onChange={this.handleChange('password')}
             placeholder="Mínimo 6 caracteres"
             pattern=".{6,}"
+            required="true"
             InputLabelProps={{
               shrink: true,
             }}
