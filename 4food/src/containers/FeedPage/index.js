@@ -9,6 +9,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { getAllRestaurants, setSelectedCategory } from '../../actions/restaurant';
+import { push } from "connected-react-router";
+import { routes } from "../Router";
 
 
 
@@ -23,7 +25,12 @@ export class FeedPage extends React.Component {
 
 
   componentDidMount() {
+    const token = window.localStorage.getItem("token")
     const { getAllRestaurants } = this.props
+
+    if(token === null) {
+      this.props.goToLogin()
+    } 
     getAllRestaurants()
   }
 
@@ -103,6 +110,7 @@ const mapStateToProps = state => ({
 
   
 const mapDispatchToProps = dispatch => ({
+  goToLogin: () => dispatch(push(routes.Login)),
   getAllRestaurants: () => dispatch(getAllRestaurants()),
   setSelectedCategory: (category) => dispatch(setSelectedCategory(category))
 })
