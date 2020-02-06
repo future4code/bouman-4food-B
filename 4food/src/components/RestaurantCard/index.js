@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from '../../resources/image.png'
 
 
 const ContainerCard = styled.div`
@@ -11,6 +10,10 @@ const ContainerCard = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
+    :last-child{
+        margin-bottom: 60px;
+    }
 `
 
 const Content = styled.div`
@@ -31,8 +34,10 @@ const ContainerSubTitle = styled.div`
 `
 
 const RestaurantImg = styled.img`
-  width: 100%;
-  height: 120px;
+    width: 100%;
+    height: 120px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 `
 
 const Title = styled.p`
@@ -65,18 +70,22 @@ const SubTitle = styled.p`
 
 export function RestaurantCard(props) {
     return (
-        <ContainerCard>
-            <RestaurantImg src={Image}/>
-            <Content>
-                <ContainerTitle>
-                    <Title>Vinil Butantã</Title>
-                </ContainerTitle>
-                <ContainerSubTitle>
-                    <SubTitle>50 - 60 min</SubTitle>
-                    <SubTitle>Frete R$6,00</SubTitle>
-                </ContainerSubTitle>
-            </Content>
-        </ContainerCard>
+        <div>
+            {props.restaurants.map( restaurant => (
+                <ContainerCard key={restaurant.id}>
+                    <RestaurantImg src={restaurant.logoUrl}/>
+                    <Content>
+                        <ContainerTitle>
+                            <Title>{restaurant.name}</Title>
+                        </ContainerTitle>
+                        <ContainerSubTitle>
+                            <SubTitle>{restaurant.deliveryTime} min</SubTitle>
+                            <SubTitle>Frete R${restaurant.shipping},00</SubTitle>
+                        </ContainerSubTitle>
+                    </Content>
+                </ContainerCard>
+            ))}
+        </div>
     );
 }
 

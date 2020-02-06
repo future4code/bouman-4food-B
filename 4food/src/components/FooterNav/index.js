@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import HomeIcon from '../../resources/homepage.svg';
-import AvatarIcon from '../../resources/avatar.svg';
-import CartIcon from '../../resources/shopping-cart.svg';
+import HomeIconGrey from '../../resources/homepage-cinza.png';
+import HomeIconRed from '../../resources/homepage-vermelho.png';
+import AvatarIconGrey from '../../resources/avatar-cinza.png';
+import AvatarIconRed from '../../resources/avatar-vermelho.png';
+import CartIconGrey from '../../resources/shopping-cart-cinza.png';
+import CartIconRed from '../../resources/shopping-cart-vermelho.png';
 
 
 const ContainerFooter = styled.div`
@@ -17,12 +20,17 @@ const ContainerFooter = styled.div`
     background-color: #ffffff;
 `
 
+const Icon = styled.img`
+    width: 27px;
+    height: 27px;
+`
+
 export function FooterNav(props) {
-    return (
+    return ( // Precisa adicionar um ternario para a cor do icone
         <ContainerFooter>
-            <buttom><img src={HomeIcon}/></buttom>
-            <buttom><img src={CartIcon}/></buttom>
-            <buttom><img src={AvatarIcon}/></buttom>
+            <buttom><Icon src={HomeIconRed}/></buttom>
+            <buttom><Icon src={CartIconGrey}/></buttom>
+            <buttom><Icon src={AvatarIconGrey}/></buttom>
         </ContainerFooter>
     );
 }
