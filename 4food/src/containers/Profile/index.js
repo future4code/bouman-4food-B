@@ -1,24 +1,14 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {routes} from '../Router';
 import { connect } from 'react-redux';
 
 
 const MainContainer = styled.div `
-width: 100%;
-height: 640px;
-`
-
-const Bar = styled.div `
-width: 100%;
-height: 64px;
--webkit-backdrop-filter:
-blur(10px);
-backdrop-filter:
-blur(10px);
-box-shadow: 0 0.5px 0 0
-rgba(0, 0, 0, 0.25);
-background-color: #ffffff;
+display:flex;
+background-color: white;
+height: 100vh;
+align-items: center;
+flex-direction: column;
 `
 
 const Title = styled.div `
@@ -26,19 +16,8 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 text-align: center;
-width: 175px;
-height: 44px;
-`
-
-const TitleText = styled.div `
-display: flex;
-justify-content: center;
-text-align: center;
-width: 68px;
-height: 19px;
-font-family: Roboto;
-font-size: 16px;
-color: #000000;
+width: 100%;
+height: 24px;
 `
 
 const UserName = styled.div `
@@ -190,11 +169,11 @@ class ProfilePage extends Component {
 
         return (
             <MainContainer>
-                <Bar>
-                    <Title>
-                        <TitleText>Meu perfil</TitleText>
-                    </Title>
-                </Bar>
+                
+                <Title>
+                    <p>Meu perfil</p>
+                </Title>
+                <hr />
                 <UserName>Nome aqui</UserName>
                 <UserEmail>Email do cidadão</UserEmail>
                 <Cpf>999.999.999-99</Cpf>

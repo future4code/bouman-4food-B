@@ -3,6 +3,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
 import Home from "../Home";
 import Login from "../Login";
+import Profile from "../Profile";
 
 export const routes = {
   Home: "/",
@@ -16,6 +17,7 @@ function Router(props) {
       <Switch>
         <Route exact path={routes.Home} component={Home} />
         <Route exact path={routes.Login} component={Login} />
+        <Route exact path={routes.Profile} component={Profile} />
       </Switch>
     </ConnectedRouter>
   );
