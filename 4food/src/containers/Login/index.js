@@ -9,6 +9,9 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { postLoginUser } from "../../actions/user";
 import logo from "../../resources/logo-vermelho.svg"
+import { routes } from '../Router'
+import { push } from "connected-react-router";
+
 
 
 const DivContet = styled.div`
@@ -36,7 +39,7 @@ const FormLogin = styled.form`
 
 
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -118,7 +121,7 @@ class LoginPage extends Component {
           <br/>
           <Button  type="submit" variant="contained" color="primary" >Entrar</Button>
         </FormLogin>
-         <p>Não possui cadastro? <Button onClick={this.props.goToSingUp} size="small"> <h5>Clique aqui.</h5></Button> </p>
+         <p>Não possui cadastro? <Button onClick={this.props.goToSignUp} size="small"> <h5>Clique aqui.</h5></Button> </p>
       </DivContet>     
     );
   }
@@ -127,7 +130,7 @@ class LoginPage extends Component {
 
 const mapDispatchToProps = (dispatch) =>({
   login: (email, password) => dispatch(postLoginUser(email, password)),
-  // goToSingUp: () => dispatch(push(routes.ROTACADASTROUSER)),
+  goToSignUp: () => dispatch(push(routes.SignUp)),
 })
 
 
