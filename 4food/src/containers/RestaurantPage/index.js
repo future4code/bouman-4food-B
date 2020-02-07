@@ -1,16 +1,60 @@
-import React from "react"
-import RestaurantDetails from "../../components/RestaurantDetails"
-import RestaurantMenu from "../../components/RestaurantMenu"
+import React, { Component } from "react"
+import RestaurantDetails from "../../components/RestaurantDetails/RestaurantDetails"
+import RestaurantMenu from "../../components/RestaurantMenu/RestaurantMenu"
+import RestaurantMenuTitle from "../../components/RestaurantMenuTitle/RestaurantMenuTitle"
+import { getPostDetails } from "../../actions/restaurant"
+import { connect } from "react-redux"
 
 
-function RestaurantPage(props){
+class RestaurantPage extends Component {
 
-    return(
-        <>
-            <RestaurantDetails />
-            <RestaurantMenu />
-        </>
-    )
+    componentDidMount() {
+        this.props.getPostDetails("1")
+    }
+
+    render() {
+
+        const { details } = this.props
+
+        let categories = []
+
+        if (details && details.products) {
+            details.products.forEach(item => {
+                categories.push(item.category)
+            })
+            categories = [...new Set(categories)]
+        }
+        console.log(categories)
+
+       
+
+
+        return (
+            <>
+                <RestaurantDetails
+                    logo={details.logoUrl}
+                    title={details.name}
+                    category={details.category}
+                    deliveryTime={details.deliveryTime}
+                    shipping={details.shipping}
+                    address={details.address}
+                />
+
+                {categories && categories.map(category => (
+                    <RestaurantMenuTitle products={details.products} categoryTitle={category}/>
+                ))}
+
+            </>
+        )
+    }
 }
 
-export default RestaurantPage
+const mapStateToProps = state => ({
+    details: state.restaurant.allDetailsRestaurant,
+})
+
+const mapDispatchToProps = dispatch => ({
+    getPostDetails: restaurantId => dispatch(getPostDetails(restaurantId)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantPage)

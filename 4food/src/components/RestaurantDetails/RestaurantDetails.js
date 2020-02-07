@@ -1,5 +1,4 @@
 import React from "react"
-import RestaurantLogo from "../resources/RestaurantLogo.png"
 import styled from "styled-components"
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -7,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 const ImageLogo = styled.img`
     width: 100%;
     padding: 17px 16px 12px 16px;
+    border-radius: 25px 25px 0 0;
 `
 
 const TitleRed = styled.h1`
@@ -30,7 +30,7 @@ const TextGrey = styled.p`
     line-height: normal;
     letter-spacing: -0.39px;
     color: #b8b8b8;
-    margin: 8px 0;
+    margin: 4px 0;
 `
 
 const Div = styled.div`
@@ -41,23 +41,23 @@ function RestaurantDetails(props) {
 
     return (
         <Paper elevation={0}>
-            <ImageLogo src={RestaurantLogo} />
+            <ImageLogo src={props.logo} />
             <Div>
-                <Grid container spacing={3}>
+                <Grid container>
                     <Grid item xs={12}>
-                        <TitleRed>Bullguer Vila Madalena</TitleRed>
+                        <TitleRed>{props.title}</TitleRed>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextGrey>Burger</TextGrey>
+                        <TextGrey>{props.category}</TextGrey>
                     </Grid>
                     <Grid item xs={4}>
-                        <TextGrey>50 - 60 min</TextGrey>
+                        <TextGrey>{props.deliveryTime} min</TextGrey>
                     </Grid>
                     <Grid item xs={4}>
-                        <TextGrey>Frete R$6,00</TextGrey>
+                        <TextGrey>Frete: R${props.shipping}</TextGrey>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextGrey>R. Fradique Coutinho, 1136 - Vila Madalena</TextGrey>
+                        <TextGrey>{props.address}</TextGrey>
                     </Grid>
                 </Grid>
             </Div>

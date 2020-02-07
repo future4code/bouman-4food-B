@@ -1,4 +1,5 @@
 const initialState = {
+    allDetailsRestaurant: {},
     allRestaurants: [],
     selectedCategory: "",
     activeOrder: null,
@@ -6,6 +7,8 @@ const initialState = {
 
 const restaurant = (state = initialState, action) => {
     switch(action.type){
+        case "SET_RESTAURANT_DETAILS":
+            return { ...state, allDetailsRestaurant: action.payload.restaurantId }
         case 'SET_ALL_RESTAURANTS':
             const restaurantList = action.payload.allRestaurants;
             return {...state, allRestaurants: restaurantList};
@@ -20,4 +23,4 @@ const restaurant = (state = initialState, action) => {
     }
 }
 
-export default restaurant;
+export default restaurant
