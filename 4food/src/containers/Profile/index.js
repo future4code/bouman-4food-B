@@ -200,8 +200,8 @@ class ProfilePage extends Component {
                     <p>Meu perfil</p>
                 </Title>
                 <hr />
-                <UserName onChange={this.handleProfileInfo}
-                name="name" value={name}></UserName>
+                {/* <UserName onChange={this.handleProfileInfo}
+                name="name" value={name}></UserName> */}
                 <UserEmail>Email do cidadão</UserEmail>
                 <Cpf>999.999.999-99</Cpf>
                 <AddressBox>

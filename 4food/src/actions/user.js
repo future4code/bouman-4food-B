@@ -49,7 +49,7 @@ export const signUp = (name, email, cpf, password) => async (dispatch) => {
 
     try {
         const response = await axios.post (`${baseURL}/signup`, signUpInfo)
-        window.localStorage.getItem("token", response.data.token);
+        window.localStorage.setItem("token", response.data.token);
         dispatch(push(routes.Adress))
         window.alert("Cadastro de usuário realizado com sucesso!");
     } catch (error) {
@@ -72,6 +72,7 @@ export const registerAddress = (form) => async (dispatch) => {
         dispatch(push(routes.Feed))
         window.alert("Cadastro de endereço realizado com sucesso!");
     }catch(error){
+        console.log(error)
         // dispatch(push(routes.Adress)) redirecionar para página de endereço
         window.alert("É necessário cadastrar um endereço.")
     }
