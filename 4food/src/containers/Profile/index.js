@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {getProfileInfo} from '../../actions';
 import {push} from 'connected-react-router';
 import {routes} from '../Router';
-import {profileReducer} from '../../reducers';
+import profile from '../../reducers/profile';
 
 
 
@@ -165,6 +165,12 @@ class ProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id:"",
+            name:"",
+            email:"",
+            cpf:"",
+            hasAddress:"",
+            adress:"",
         }
     }
 
@@ -179,14 +185,10 @@ class ProfilePage extends Component {
         }
     }
 
-    handleProfileInfo = (profileId) => {
-        this.props.profile(profileId)
-        this.props.id()
-        this.props.name()
-        this.props.email()
-        this.props.cpf()
-        this.props.hasAdress()
-        this.props.adress()
+    handleProfileInfo = (event) => {
+        this.setState ({
+            [event.target.name]: event.target.value
+        });
     }
 
     render() {
@@ -198,7 +200,8 @@ class ProfilePage extends Component {
                     <p>Meu perfil</p>
                 </Title>
                 <hr />
-                <UserName>{this.props.name}</UserName>
+                <UserName onChange={this.handleProfileInfo}
+                name="name" value={name}></UserName>
                 <UserEmail>Email do cidadão</UserEmail>
                 <Cpf>999.999.999-99</Cpf>
                 <AddressBox>
@@ -220,15 +223,16 @@ class ProfilePage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    profileInfo: state.profileReducer.profileInfo
+    profileInfo: state.profile.profileInfo
 })
 
-function mapDispatchToProps(dispatch) {
-    return {
-        GoToLogin: () => dispatch(push(routes.login)),
-        getProfileInfo: (profileId) => dispatch(getProfileInfo(profileId))
-    }
-}
+const mapDispatchToProps = (dispatch) => ({
+    GoToLogin: () => dispatch(push(routes.login)),
+    getProfileInfo: (id, name, email, cpf, hasAddress, Address) => dispatch(getProfileInfo(id, name, email, cpf, hasAddress, Address))
+})
+    
+    
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

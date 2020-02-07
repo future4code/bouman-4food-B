@@ -1,11 +1,11 @@
 const initialState = {
-    allProfile: []
+    profileInfo: []
 }
 
 const profile = (state = initialState, action) => {
     switch(action.type){
         case "GET_PROFILE":
-            return {...state, allProfile: action.payload.profile}
+            return {...state, profileInfo: action.payload.profile}
         default:
             return state
     }

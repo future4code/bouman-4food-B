@@ -38,7 +38,8 @@ export const postLoginUser = (email, password) => async (dispatch) =>{
     }
 }
 
-export const getProfileInfo = () => async (dispatch) => {
+export const getProfileInfo = (id, name, cpf, hasAddress, address) => async (dispatch) => {
+    const profileInfo = {id, name, cpf, hasAddress, address}
     try {
         const token = window.localStorage.getItem("token")
         const config = {
@@ -46,8 +47,8 @@ export const getProfileInfo = () => async (dispatch) => {
                 auth: token
             }
         }
-        const response = await axios.get(`${baseURL}/profile`, config)
-        dispatch(getProfile(response.data.profile))
+        const response = await axios.get(`${baseURL}/profile`, config, profileInfo)
+        dispatch(getProfile(response.data.user))
     } catch(error) {
         console.log(error)
         window.alert("Não foi possível acessar o perfil")
