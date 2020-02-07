@@ -38,19 +38,20 @@ export const postLoginUser = (email, password) => async (dispatch) => {
 }
 
 
-export const signUp = (username, email, cpf, password, confirmPassword) => async (dispatch) => {
+export const signUp = (name, email, cpf, password) => async (dispatch) => {
     const signUpInfo = {
-        username: username,
-        email: email,
-        cpf: cpf,
-        password: password,
-        confirmPassword: confirmPassword,
+        name,
+        email,
+        cpf,
+        password,
+        
     };
 
     try {
         const response = await axios.post (`${baseURL}/signup`, signUpInfo)
         window.localStorage.getItem("token", response.data.token);
         dispatch(push(routes.Adress))
+        window.alert("Cadastro de usuário realizado com sucesso!");
     } catch (error) {
         window.alert("Não foi possível realizar o cadastro")
     }

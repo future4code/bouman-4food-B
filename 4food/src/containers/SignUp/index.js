@@ -75,12 +75,12 @@ export class SignUp extends Component {
   };
     
   handleSignUpButton = () => {
-    const { username, email, password } = this.state;
-      this.props.signUp(username, email, password)
+    const { name, email, cpf, password } = this.state;
+      this.props.signUp(name, email, cpf, password)
   }
 
     render() {
-        const { username, email, cpf } = this.state;
+        const { name, email, cpf } = this.state;
         return (
             <MainContainer>
                 
@@ -91,7 +91,7 @@ export class SignUp extends Component {
                 <TextField
                     required
                     onChange={this.handleSignUpTextField}
-                    name="username"
+                    name="name"
                     label="Nome"
                     placeholder="Nome e sobrenome"
                     InputLabelProps={{
@@ -99,7 +99,7 @@ export class SignUp extends Component {
                       }}
                     margin="normal"
                     variant="outlined"
-                    value={username}
+                    value={name}
                 />
 
                 <TextField
@@ -135,6 +135,7 @@ export class SignUp extends Component {
                     variant="outlined"
                     type={this.state.showPassword ? 'text' : 'password'}
                     label="Senha"
+                    name="password"
                     placeholder="Mínimo 6 caracteres"
                     InputLabelProps={{
                       shrink: true,
@@ -157,7 +158,7 @@ export class SignUp extends Component {
                 />
                 <TextField
                     variant="outlined"
-                    type={this.state.showConfirmPassword ? 'text' : 'confirmPassword'}
+                    type={this.state.showConfirmPassword ? 'text' : 'password'}
                     label="Confirmar"
                     placeholder="Confirme a senha anterior"
                     InputLabelProps={{
@@ -195,8 +196,8 @@ export class SignUp extends Component {
 
 //Função para dar dispatch
 const mapDispatchToProps = (dispatch) => ({
-    signUp: (username, email, cpf, password, confirmPassword) => 
-    dispatch(signUp(username, email, cpf, password, confirmPassword)),
+    signUp: (name, email, cpf, password) => 
+    dispatch(signUp(name, email, cpf, password)),
 });
 
 //Deixei o primeiro null porque não temos mapStateToProps até agora 
