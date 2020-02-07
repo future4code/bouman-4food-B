@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signUp } from "../../action/signUp";
+import { signUp } from "../../actions/user";
 import styled from "styled-components";
-import logo from "../../images/logo-future-eats-invert.png";
+import logo from "../../resources/logo-future-eats-invert.png";
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';

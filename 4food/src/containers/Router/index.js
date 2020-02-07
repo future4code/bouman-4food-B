@@ -11,8 +11,8 @@ export const routes = {
   Home: "/",
   Login: "/login",
   Feed: "/feed",
-  signUp: "/signup",
-  adress: "/address,"
+  SignUp: "/signup",
+  Adress: "/address",
 };
 
 
@@ -23,8 +23,8 @@ function Router(props) {
         <Route exact path={routes.Home} component={Home} />
         <Route exact path={routes.Login} component={Login} />
         <Route exact path={routes.Feed} component={FeedPage} />
-        <Route exact path={routes.signUp} component={SignUp} />
-        <Route exact path={routes.address} component={Address} />
+        <Route exact path={routes.SignUp} component={SignUp} />
+        <Route exact path={routes.Adress} component={Address} />
       </Switch>
     </ConnectedRouter>
   );
