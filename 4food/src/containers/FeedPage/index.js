@@ -8,6 +8,7 @@ import SearchIcon from '../../resources/search.svg';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import OrderCard from "../../components/OrderCard"
 import { getAllRestaurants, setSelectedCategory } from '../../actions/restaurant';
 import { push } from "connected-react-router";
 import { routes } from "../Router";
@@ -49,7 +50,7 @@ export class FeedPage extends React.Component {
       return filteredRestaurants.filter( restaurant => {
         const restaurantName = restaurant.name.toLowerCase();
         const searchedName = form.restaurant.toLowerCase();
-
+      
         return restaurantName.includes(searchedName)
       })
     } else {
@@ -76,11 +77,27 @@ export class FeedPage extends React.Component {
     }
   }
 
+  changePageOnClickIcon = (event) => {
+    const page = event.target.getAttribute('name')
+    switch(page){
+      // case 'Feed':
+      //   this.props.goToFeed()
+      //   break
+      case 'Cart':
+        this.props.goToCart()
+        break
+      case 'Profile':
+        this.props.goToProfile()
+        break
+    }
+  }
+
 
   render() {
     const restaurantOfCategory = this.fetchRestaurantOfCategory();
     const filteredRestaurant = this.fetchRestarantByName(restaurantOfCategory);
-   
+    const { activeOrder } = this.props
+    
     return (
       <div>
         <SearchForm>
@@ -96,7 +113,8 @@ export class FeedPage extends React.Component {
         </SearchForm>
         <NavMenu selectCategory={this.selectCategory}/>
         <RestaurantCard restaurants={filteredRestaurant}/>
-        <FooterNav/>
+        {activeOrder !== null ? <OrderCard order={activeOrder}/> : null}
+        <FooterNav changePage={this.changePageOnClickIcon}/>
       </div>
     )
   }
@@ -106,6 +124,7 @@ export class FeedPage extends React.Component {
 const mapStateToProps = state => ({
   allRestaurants: state.restaurant.allRestaurants,
   selectedCategory: state.restaurant.selectedCategory,
+  activeOrder: state.restaurant.activeOrder,
 });
 
   

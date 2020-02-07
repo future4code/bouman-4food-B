@@ -66,11 +66,26 @@ const SubTitle = styled.p`
     margin-top: 4px;
 `
 
+const Msg = styled.p`
+    width: 100%;
+    height: 18px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.39px;
+    text-align: center;
+    color: #000000;
+`
+
 
 
 export function RestaurantCard(props) {
     return (
         <div>
+            {props.restaurants.length === 0 ? <Msg>Não encontramos :(</Msg> :  null}
             {props.restaurants.map( restaurant => (
                 <ContainerCard key={restaurant.id}>
                     <RestaurantImg src={restaurant.logoUrl}/>

@@ -1,6 +1,7 @@
 const initialState = {
     allRestaurants: [],
     selectedCategory: "",
+    activeOrder: null,
 }
 
 const restaurant = (state = initialState, action) => {
@@ -11,6 +12,9 @@ const restaurant = (state = initialState, action) => {
         case 'SET_SELECTED_CATEGORY':
             const category = action.payload.category;
             return {...state, selectedCategory: category};
+        case 'SET_ACTIVE_ORDER':
+            const order = action.payload.order;
+            return {...state, activeOrder: order};
         default:
             return state
     }
