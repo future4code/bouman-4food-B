@@ -6,6 +6,7 @@ import AvatarIconGrey from '../../resources/avatar-cinza.png';
 import AvatarIconRed from '../../resources/avatar-vermelho.png';
 import CartIconGrey from '../../resources/shopping-cart-cinza.png';
 import CartIconRed from '../../resources/shopping-cart-vermelho.png';
+import { routes } from '../../containers/Router'
 
 
 const ContainerFooter = styled.div`
@@ -26,11 +27,11 @@ const Icon = styled.img`
 `
 
 export function FooterNav(props) {
-    return ( // Precisa adicionar um ternario para a cor do icone
+    return ( 
         <ContainerFooter>
-            <buttom><Icon src={HomeIconRed}/></buttom>
-            <buttom><Icon src={CartIconGrey}/></buttom>
-            <buttom><Icon src={AvatarIconGrey}/></buttom>
+            <buttom onClick={props.changePage}><Icon name="Feed" src={routes.Feed ? HomeIconRed :  HomeIconGrey}/></buttom>
+            <buttom onClick={props.changePage}><Icon name="Cart" src={routes.Cart ? CartIconRed :  CartIconGrey}/></buttom>
+            <buttom onClick={props.changePage}><Icon name="Profile" src={routes.Profile ? AvatarIconRed :  AvatarIconGrey}/></buttom>
         </ContainerFooter>
     );
 }
