@@ -39,7 +39,7 @@ const FormLogin = styled.form`
 
 
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
