@@ -15,7 +15,7 @@ async (dispatch) => {
     };
 
     try {
-        const response = await axios.post (`${baseURL}/signup`, signUpInfo)
+        const response = await axios.post (`${baseURL}`, signUpInfo)
         window.localStorage.getItem("token", response.data.token);
         dispatch(push(routes.root))
     } catch (error) {

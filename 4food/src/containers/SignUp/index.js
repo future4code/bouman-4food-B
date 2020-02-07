@@ -48,27 +48,36 @@ export class SignUp extends Component {
             password: "",
             confirmPassword: "",
             showPassword: false,
+            showConfirmPassword: false,
         };
     }
 
-    handleChange = prop => event => {
+  handleChangePassword = prop => event => {
     this.setState({ [prop]: event.target.value });
   };
 
-    handleClickShowPassword = () => {
-        this.setState(state => ({ showPassword: !state.showPassword }));
-      };
+  handleChangeConfirmPassword = prop => event => {
+    this.setState({ [prop]: event.target.value });
+  };
 
-      handleSignUpTextField = event => {
-        this.setState({
-          [event.target.name]: event.target.value
-        });
-      };
+  handleClickShowPassword = () => {
+    this.setState(state => ({ showPassword: !state.showPassword }));
+  };
+
+  handleClickShowConfirmPassword = () => {
+    this.setState(state => ({ showConfirmPassword: !state.showConfirmPassword }));
+  };
+
+  handleSignUpTextField = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
     
-      handleSignUpButton = () => {
-        const { username, email, password } = this.state;
-        this.props.signUp(username, email, password)
-      }
+  handleSignUpButton = () => {
+    const { username, email, password } = this.state;
+      this.props.signUp(username, email, password)
+  }
 
     render() {
         const { username, email, cpf } = this.state;
@@ -76,12 +85,18 @@ export class SignUp extends Component {
             <MainContainer>
                 
                 <Logo src={logo} alt="iFuture Logo" />
-              
+                <h4> Cadastrar </h4>
               <FormContainer>
+                
                 <TextField
                     required
                     onChange={this.handleSignUpTextField}
+                    name="username"
                     label="Nome"
+                    placeholder="Nome e sobrenome"
+                    InputLabelProps={{
+                      shrink: true,
+                      }}
                     margin="normal"
                     variant="outlined"
                     value={username}
@@ -90,7 +105,12 @@ export class SignUp extends Component {
                 <TextField
                     required
                     onChange={this.handleSignUpTextField}
+                    name="email"
                     label="E-mail"
+                    placeholder="email@email.com.br"
+                    InputLabelProps={{
+                      shrink: true,
+                      }}
                     margin="normal"
                     variant="outlined"
                     value={email}
@@ -99,7 +119,12 @@ export class SignUp extends Component {
                 <TextField
                     required
                     onChange={this.handleSignUpTextField}
+                    name="cpf"
                     label="CPF"
+                    placeholder="000.000.000-00"
+                    InputLabelProps={{
+                      shrink: true,
+                      }}
                     margin="normal"
                     variant="outlined"
                     value={cpf}
@@ -110,9 +135,13 @@ export class SignUp extends Component {
                     variant="outlined"
                     type={this.state.showPassword ? 'text' : 'password'}
                     label="Senha"
+                    placeholder="Mínimo 6 caracteres"
+                    InputLabelProps={{
+                      shrink: true,
+                      }}
                     margin="normal"
                     value={this.state.password}
-                    onChange={this.handleChange('password')}
+                    onChange={this.handleChangePassword('password')}
                     InputProps={{
                     endAdornment: (
                     <InputAdornment position="end">
@@ -128,19 +157,23 @@ export class SignUp extends Component {
                 />
                 <TextField
                     variant="outlined"
-                    type={this.state.showPassword ? 'text' : 'confirmPassword'}
-                    label="Confirme"
+                    type={this.state.showConfirmPassword ? 'text' : 'confirmPassword'}
+                    label="Confirmar"
+                    placeholder="Confirme a senha anterior"
+                    InputLabelProps={{
+                      shrink: true,
+                      }}
                     margin="normal"
                     value={this.state.confirmPassword}
-                    onChange={this.handleChange('confirmPassword')}
+                    onChange={this.handleChangeConfirmPassword('confirmPassword')}
                     InputProps={{
                     endAdornment: (
                     <InputAdornment position="end">
                     <IconButton
                         aria-label="Toggle password visibility"
-                        onClick={this.handleClickShowPassword}
+                        onClick={this.handleClickShowConfirmPassword}
                     >
-                        {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                        {this.state.showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                     </InputAdornment>
                     ),
