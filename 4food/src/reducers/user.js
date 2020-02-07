@@ -1,8 +1,8 @@
 const initialState = {
-    allLogin: []
 }
 
-const login = (state = initialState, action) => {
+
+const user = (state = initialState, action) => {
     switch(action.type){
         case "LOGIN_USER":
             return {...state, allLogin: action.payload.login}
@@ -11,4 +11,5 @@ const login = (state = initialState, action) => {
     }
 }
 
-export default login;
+
+export default user;

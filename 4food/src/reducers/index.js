@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import login from "./login";
-import restaurant from "./restaurant"
+import user from "./user";
+import restaurant from "./restaurant";
 
 export const generateReducers = history =>
   combineReducers({
@@ -9,4 +10,5 @@ export const generateReducers = history =>
     login,
     restaurant,
     // Outros reducers aqui
+    user,
   });

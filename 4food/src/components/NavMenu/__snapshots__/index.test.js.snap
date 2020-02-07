@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot NavMenu 1`] = `
+<div>
+  <div
+    className="sc-bdVaJa fsmojC"
+  >
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Burger
+    </span>
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Asiática
+    </span>
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Massas
+    </span>
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Saudáveis
+    </span>
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Burger
+    </span>
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Asiática
+    </span>
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Massas
+    </span>
+    <span
+      className="sc-bwzfXH blytJS"
+    >
+      Saudáveis
+    </span>
+  </div>
+</div>
+`;
