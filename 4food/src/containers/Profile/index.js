@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import {getProfileInfo} from '../../actions';
 import {push} from 'connected-react-router';
+import {routes} from '../Router';
+import {profileReducer} from '../../reducers';
+
 
 
 const MainContainer = styled.div `
@@ -169,10 +172,10 @@ class ProfilePage extends Component {
         const token = window.localStorage.getItem("token")
 
         if (token === null) {
-            this.props.GoToLogin
+            this.props.GoToLogin()
         }
         else {
-            this.props.getProfileInfo(this.props.profileId)
+            this.props.getProfileInfo (this.props.profileId)
         }
     }
 
@@ -216,11 +219,16 @@ class ProfilePage extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    profileInfo: state.profileReducer.profileInfo
+})
+
 function mapDispatchToProps(dispatch) {
     return {
-        GoToLogin: () => dispatch(push(routes.login))
+        GoToLogin: () => dispatch(push(routes.login)),
+        getProfileInfo: (profileId) => dispatch(getProfileInfo(profileId))
     }
 }
 
 
-export default connect(mapDispatchToProps)(ProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
