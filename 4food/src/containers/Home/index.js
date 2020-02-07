@@ -32,9 +32,9 @@ export class Home extends Component {
     componentDidMount() {
         const token = window.localStorage.getItem("token")
         if(token === null) {
-            this.props.goToLogin()
+            setTimeout(() => {this.props.goToLogin()}, 2000);
         } else {
-            this.props.goToFeed()
+            setTimeout(() => {this.props.goToFeed()}, 2000);
         }
     }
 
