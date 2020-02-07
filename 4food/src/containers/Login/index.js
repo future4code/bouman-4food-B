@@ -3,8 +3,14 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button"
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { postLoginUser } from "../../actions";
-import logo from "../../img/logo-vermelho.svg"
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { postLoginUser } from "../../actions/user";
+import logo from "../../resources/logo-vermelho.svg"
+import { routes } from '../Router'
+import { push } from "connected-react-router";
 
 
 
@@ -27,17 +33,19 @@ const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  width: 90%;
 `;
 
 
 
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      showPassword: false,
     };
   }
 
@@ -46,14 +54,23 @@ class LoginPage extends Component {
       [event.target.name]: event.target.value
     });
   };
+  
+  handleChange = prop => event => {
+    this.setState({ [prop]: event.target.value });
+  };
 
   handleLEntrarButton = (event) =>{
     event.preventDefault()
     this.props.login(this.state.email, this.state.password)
   }
 
+  handleClickShowPassword = () => {
+    this.setState(state => ({ showPassword: !state.showPassword }));
+  };
+
   render() {
     const { email, password } = this.state;
+    const { classes } = this.props;
 
     return (
       <DivContet>
@@ -69,32 +86,52 @@ class LoginPage extends Component {
             label="E-mail"
             value={email}
             required="true"
+            placeholder="email@email.com"
+            InputLabelProps={{
+              shrink: true,
+            }}
             variant="outlined"
           />
            <br/>
-          <TextField 
-            onChange={this.handleFieldChange}
-            name="password"
-            type="password"
-            label="Password"
-            value={password}
-            required="true"
+          <TextField
             variant="outlined"
+            type={this.state.showPassword ? 'text' : 'password'}
+            label="Senha"
+            value={password}
+            onChange={this.handleChange('password')}
+            placeholder="Mínimo 6 caracteres"
+            pattern=".{6,}"
+            required="true"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                 aria-label="Toggle password visibility"
+                 onClick={this.handleClickShowPassword}
+                >
+                {this.state.showPassword ? <Visibility />  : <VisibilityOff/>}
+               </IconButton>
+              </InputAdornment>
+           ),
+           }} 
           />
           <br/>
           <Button  type="submit" variant="contained" color="primary" >Entrar</Button>
         </FormLogin>
-        <p>Não possui cadastro? <a href= "#">Clique aqui.</a> </p>
+         <p>Não possui cadastro? <Button onClick={this.props.goToSignUp} size="small"> <h5>Clique aqui.</h5></Button> </p>
       </DivContet>     
     );
   }
 }
 
+
 const mapDispatchToProps = (dispatch) =>({
   login: (email, password) => dispatch(postLoginUser(email, password)),
+  goToSignUp: () => dispatch(push(routes.SignUp)),
 })
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(LoginPage);
+
+export default connect(null, mapDispatchToProps)(LoginPage);

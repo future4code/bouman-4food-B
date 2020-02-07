@@ -15,6 +15,12 @@ import { createBrowserHistory } from "history";
 import { createStore, applyMiddleware, compose } from "redux";
 import { generateReducers } from "../../reducers";
 import { routerMiddleware } from "connected-react-router";
+import WebFont from 'webfontloader'
+WebFont.load({
+  google: {
+    families: ['Roboto', 'sans-serif']
+  }
+});
 
 const generateClassName = createGenerateClassName();
 const jss = create({
