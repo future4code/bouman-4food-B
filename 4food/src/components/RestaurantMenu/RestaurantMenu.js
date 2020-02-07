@@ -1,7 +1,7 @@
 import React from "react"
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
-import Image from "../resources/ImageItem.png"
+import Image from "../../resources/ImageItem.png"
 
 const Card = styled.div`
     font-family: 'Roboto', sans-serif;
@@ -9,7 +9,7 @@ const Card = styled.div`
     height: 112px;
     border: solid 1px #b8b8b8;
     border-radius: 8px;
-    margin: 0 2.44%;
+    margin: 5px 2.44%;
 `
 
 const ImageItem = styled.img`
