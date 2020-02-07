@@ -3,6 +3,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
 import Home from "../Home";
 import Login from "../Login";
+import Profile from "../Profile";
 import RestaurantPage from "../RestaurantPage"
 import FeedPage from "../FeedPage"
 import SignUp from "../SignUp";
@@ -12,6 +13,7 @@ import Cart from "../Cart"
 export const routes = {
   Home: "/",
   Login: "/login",
+  Profile: "/profile",
   restaurantPage: "/restaurant-page",
   Feed: "/feed",
   SignUp: "/signup",
@@ -26,6 +28,7 @@ function Router(props) {
       <Switch>
         <Route exact path={routes.Home} component={Home} />
         <Route exact path={routes.Login} component={Login} />
+        <Route exact path={routes.Profile} component={Profile} />
         <Route exact path={routes.restaurantPage} component={RestaurantPage} />
         <Route exact path={routes.Feed} component={FeedPage} />
         <Route exact path={routes.SignUp} component={SignUp} />
