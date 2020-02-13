@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot RestaurantCard 1`] = `
+<div
+  className="sc-bdVaJa iKMTul"
+>
+  <img
+    className="sc-ifAKCX bHeiqT"
+    src="image.png"
+  />
+  <div
+    className="sc-bwzfXH kWmsFi"
+  >
+    <div
+      className="sc-htpNat klhMYs"
+    >
+      <p
+        className="sc-EHOje dqOFZr"
+      >
+        Vinil Butantã
+      </p>
+    </div>
+    <div
+      className="sc-bxivhb hgknfb"
+    >
+      <p
+        className="sc-bZQynM hOpKhM"
+      >
+        50 - 60 min
+      </p>
+      <p
+        className="sc-bZQynM hOpKhM"
+      >
+        Frete R$6,00
+      </p>
+    </div>
+  </div>
+</div>
+`;
