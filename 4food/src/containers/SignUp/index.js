@@ -89,7 +89,7 @@ export class SignUp extends Component {
               <FormContainer>
                 
                 <TextField
-                    required
+                    required="true"
                     onChange={this.handleSignUpTextField}
                     name="name"
                     label="Nome"
@@ -103,7 +103,7 @@ export class SignUp extends Component {
                 />
 
                 <TextField
-                    required
+                    required="true"
                     onChange={this.handleSignUpTextField}
                     name="email"
                     label="E-mail"
@@ -117,7 +117,7 @@ export class SignUp extends Component {
                 />
 
                 <TextField
-                    required
+                    required="true"
                     onChange={this.handleSignUpTextField}
                     name="cpf"
                     label="CPF"
@@ -132,6 +132,7 @@ export class SignUp extends Component {
                 />
 
                 <TextField
+                    required="true"
                     variant="outlined"
                     type={this.state.showPassword ? 'text' : 'password'}
                     label="Senha"
@@ -150,13 +151,14 @@ export class SignUp extends Component {
                         aria-label="Toggle password visibility"
                         onClick={this.handleClickShowPassword}
                     >
-                        {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                        {this.state.showPassword ? <Visibility /> : <VisibilityOff /> }
                     </IconButton>
                     </InputAdornment>
                     ),
                     }}
                 />
                 <TextField
+                    required="true"
                     variant="outlined"
                     type={this.state.showConfirmPassword ? 'text' : 'password'}
                     label="Confirmar"
@@ -174,7 +176,7 @@ export class SignUp extends Component {
                         aria-label="Toggle password visibility"
                         onClick={this.handleClickShowConfirmPassword}
                     >
-                        {this.state.showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                        {this.state.showConfirmPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                     </InputAdornment>
                     ),

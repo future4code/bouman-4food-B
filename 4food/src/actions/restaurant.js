@@ -26,8 +26,6 @@ export const getPostDetails = restaurantId => async(dispatch) => {
     }
 }
 
-const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/FourFoodB"
-
 
 export const getAllRestaurants = () => async (dispatch) => {
     const token =  window.localStorage.getItem("token");

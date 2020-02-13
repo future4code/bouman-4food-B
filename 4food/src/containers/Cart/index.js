@@ -11,6 +11,7 @@ import ContainerFooter from "../../components/FooterNav"
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RestaurantMenu from "../../components/RestaurantMenu/RestaurantMenu"
+import { render } from "enzyme";
 
 
 const AddressShipping = styled.div`
@@ -84,7 +85,28 @@ const FoodList = styled.div`
 `
 
 
-export function Cart(props) {
+export class Cart extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    changePageOnClickIcon = (event) => {
+        const page = event.target.getAttribute('name')
+        switch(page){
+          case 'Feed':
+            this.props.goToFeed()
+            break
+          case 'Cart':
+            this.props.goToCart()
+            break
+          case 'Profile':
+            this.props.goToProfile()
+            break
+        }
+      }
+
+
+      render(){
 
     return (
         <Paper elevation={0}>
@@ -134,10 +156,19 @@ export function Cart(props) {
                 
                     <Button size="large" type="submit" variant="contained" color="primary" >Confirmar</Button>
                 
-                <ContainerFooter/>
+                <ContainerFooter changePage={this.changePageOnClickIcon} />
             </DivBoody>
         </Paper>
     );
 }
+}
 
-export default Cart
+const mapDispatchToProps = dispatch => ({
+    goToFeed: () => dispatch(push(routes.Feed)),
+    goToCart: () => dispatch(push(routes.Cart)),
+    goToProfile: () => dispatch(push(routes.Profile)),
+})
+
+
+
+export default connect(null, mapDispatchToProps)(Cart);

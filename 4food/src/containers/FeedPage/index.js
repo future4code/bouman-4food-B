@@ -4,7 +4,7 @@ import NavMenu from "../../components/NavMenu";
 import FooterNav from "../../components/FooterNav";
 import RestaurantCard from "../../components/RestaurantCard";
 import { SearchForm } from '../../style/feed';
-import SearchIcon from '../../resources/search.svg';
+import SearchIcon from '../../resources/search.svg'
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -80,9 +80,9 @@ export class FeedPage extends React.Component {
   changePageOnClickIcon = (event) => {
     const page = event.target.getAttribute('name')
     switch(page){
-      // case 'Feed':
-      //   this.props.goToFeed()
-      //   break
+      case 'Feed':
+        this.props.goToFeed()
+        break
       case 'Cart':
         this.props.goToCart()
         break
@@ -130,6 +130,8 @@ const mapStateToProps = state => ({
   
 const mapDispatchToProps = dispatch => ({
   goToLogin: () => dispatch(push(routes.Login)),
+  goToCart: () => dispatch(push(routes.Cart)),
+  goToProfile: () => dispatch(push(routes.Profile)),
   getAllRestaurants: () => dispatch(getAllRestaurants()),
   setSelectedCategory: (category) => dispatch(setSelectedCategory(category))
 })
